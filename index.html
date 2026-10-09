@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow: organiza tus tareas y mantén el foco.">
+  <title>TaskFlow | JG Dev</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="TaskFlow inicio">
+        <span class="brand-mark">T</span>
+        <span>TaskFlow</span>
+      </a>
+      <p class="nav-label">ESPACIO DE TRABAJO</p>
+      <button class="nav-item active" data-filter="all"><span>▦</span> Todas las tareas <span class="nav-count" id="allCount">0</span></button>
+      <button class="nav-item" data-filter="active"><span>◷</span> Pendientes <span class="nav-count" id="activeCount">0</span></button>
+      <button class="nav-item" data-filter="completed"><span>✓</span> Completadas <span class="nav-count" id="completedCount">0</span></button>
+      <div class="sidebar-bottom">
+        <div class="profile-avatar">JG</div>
+        <div><strong>JG Dev</strong><small>Espacio personal</small></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <span class="breadcrumb">Mi espacio <span>/</span> Tareas</span>
+        <span class="today" id="todayLabel"></span>
+      </header>
+
+      <section class="welcome">
+        <p class="eyebrow">TU DÍA, BAJO CONTROL</p>
+        <h1>Haz que las cosas <span>sucedan.</span></h1>
+        <p>Un paso a la vez. Organiza tus tareas y mantén el impulso.</p>
+      </section>
+
+      <section class="stats" aria-label="Resumen de tareas">
+        <article class="stat-card"><span class="stat-icon blue">▦</span><span class="stat-label">Total de tareas</span><strong id="totalStat">0</strong></article>
+        <article class="stat-card"><span class="stat-icon orange">◷</span><span class="stat-label">Pendientes</span><strong id="pendingStat">0</strong></article>
+        <article class="stat-card"><span class="stat-icon green">✓</span><span class="stat-label">Completadas</span><strong id="doneStat">0</strong></article>
+      </section>
+
+      <section class="task-panel">
+        <div class="panel-heading">
+          <div><h2 id="listTitle">Todas las tareas</h2><p id="listSubtitle">Tus objetivos, organizados en un solo lugar.</p></div>
+          <button class="primary-button" id="showFormBtn">＋ Nueva tarea</button>
+        </div>
+
+        <form id="taskForm" class="task-form hidden">
+          <label for="taskTitle">Nombre de la tarea</label>
+          <input id="taskTitle" name="title" maxlength="100" placeholder="Ej. Diseñar la página de inicio" required>
+          <div class="form-row">
+            <div class="field"><label for="taskPriority">Prioridad</label>
+              <select id="taskPriority"><option value="normal">Normal</option><option value="high">Alta</option><option value="low">Baja</option></select>
+            </div>
+            <div class="field"><label for="taskDate">Fecha límite</label><input id="taskDate" type="date"></div>
+          </div>
+          <div class="form-actions"><button type="button" class="secondary-button" id="cancelBtn">Cancelar</button><button class="primary-button" type="submit">Guardar tarea</button></div>
+        </form>
+
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar tareas..." aria-label="Buscar tareas"></label><span class="task-total" id="visibleCount">0 tareas</span></div>
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state"><div class="empty-icon">✓</div><h3>Todo empieza con una tarea</h3><p>Añade tu primera tarea y empieza a avanzar.</p><button class="secondary-button" id="emptyAddBtn">Crear primera tarea</button></div>
+        <div class="progress-wrap"><div class="progress-copy"><span>Progreso general</span><strong id="progressText">0%</strong></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div></div>
+      </section>
+      <footer>Hecho con cuidado por <strong>JG Dev</strong> · Proyecto de portafolio</footer>
+    </main>
+  </div>
+</body>
+</html>
